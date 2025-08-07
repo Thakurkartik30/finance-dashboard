@@ -96,6 +96,14 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 Builds the app for production to the `build` folder.
 
+## 📸 Screenshots
+
+<div align="center">
+  <img src="public/screenshots/dashboard.png" alt="Dashboard" width="48%" />
+  <img src="public/screenshots/add-transaction.png" alt="Add Transaction" width="48%" />
+  <img src="public/screenshots/transaction-history.png" alt="Transaction History" width="48%" />
+</div>
+
 ## 🚀 Future Enhancements
 
 ### Backend Integration
