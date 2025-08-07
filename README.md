@@ -98,10 +98,21 @@ Builds the app for production to the `build` folder.
 
 ## 📸 Screenshots
 
-<div align="center">
-  <img src="public/screenshots/dashboard.png" alt="Dashboard" width="48%" />
-  <img src="public/screenshots/add-transaction.png" alt="Add Transaction" width="48%" />
-  <img src="public/screenshots/transaction-history.png" alt="Transaction History" width="48%" />
+<div align="center" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin: 20px 0;">
+  <div style="flex: 1; min-width: 300px; max-width: 400px;">
+    <h4>Dashboard</h4>
+    <img src="https://raw.githubusercontent.com/Thakurkartik30/finance-dashboard/main/public/screenshots/dashboard.png" alt="Dashboard" style="width: 100%; border: 1px solid #e1e4e8; border-radius: 6px;" />
+  </div>
+  
+  <div style="flex: 1; min-width: 300px; max-width: 400px;">
+    <h4>Add Transaction</h4>
+    <img src="https://raw.githubusercontent.com/Thakurkartik30/finance-dashboard/main/public/screenshots/add-transaction.png" alt="Add Transaction" style="width: 100%; border: 1px solid #e1e4e8; border-radius: 6px;" />
+  </div>
+  
+  <div style="flex: 1; min-width: 300px; max-width: 400px;">
+    <h4>Transaction History</h4>
+    <img src="https://raw.githubusercontent.com/Thakurkartik30/finance-dashboard/main/public/screenshots/transaction-history.png" alt="Transaction History" style="width: 100%; border: 1px solid #e1e4e8; border-radius: 6px;" />
+  </div>
 </div>
 
 ## 🚀 Future Enhancements
