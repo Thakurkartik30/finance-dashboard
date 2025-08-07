@@ -111,7 +111,7 @@ Builds the app for production to the `build` folder.
   
   <div style="flex: 1; min-width: 300px; max-width: 400px;">
     <h4>Transaction History</h4>
-    <img src="https://raw.githubusercontent.com/Thakurkartik30/finance-dashboard/main/public/screenshots/transaction%20history.png" alt="Transaction History" style="width: 100%; border: 1px solid #e1e4e8; border-radius: 6px;" />
+    <img src="https://raw.githubusercontent.com/Thakurkartik30/finance-dashboard/main/public/screenshots/transaction-%20history.png" alt="Transaction History" style="width: 100%; border: 1px solid #e1e4e8; border-radius: 6px;" />
   </div>
 </div>
 
