@@ -2,18 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import TransactionForm from '../components/TransactionForm';
 
-// This would typically be an API call in a real app
-const addTransactionToAPI = (transaction) => {
-  console.log('Adding transaction:', transaction);
-  // In a real app, this would be an API call
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({ ...transaction, id: Date.now() });
-    }, 500);
-  });
-};
-
-const AddTransaction = () => {
+const AddTransaction = ({ onAddTransaction }) => {
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null);
@@ -23,8 +12,9 @@ const AddTransaction = () => {
     setError(null);
     
     try {
-      await addTransactionToAPI(transaction);
-      // In a real app, you might want to update the global state or refetch data
+      // Call the parent's onAddTransaction function to add the new transaction
+      await onAddTransaction(transaction);
+      // Navigate back to the dashboard after successful submission
       navigate('/');
     } catch (err) {
       console.error('Error adding transaction:', err);

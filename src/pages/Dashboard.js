@@ -1,20 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { FaArrowUp, FaArrowDown, FaWallet } from 'react-icons/fa';
+import { FaArrowUp, FaArrowDown, FaWallet, FaPlus } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import SummaryCard from '../components/SummaryCard';
 import TransactionTable from '../components/TransactionTable';
 import TopCategoriesChart from '../components/TopCategoriesChart';
 
-// Mock data
-const mockTransactions = [
-  { id: 1, title: 'Grocery Shopping', amount: 125.75, category: 'Food', type: 'expense', date: '2025-08-05' },
-  { id: 2, title: 'Freelance Work', amount: 850.00, category: 'Salary', type: 'income', date: '2025-08-03' },
-  { id: 3, title: 'Electric Bill', amount: 78.90, category: 'Utilities', type: 'expense', date: '2025-08-01' },
-  { id: 4, title: 'New Laptop', amount: 1299.99, category: 'Shopping', type: 'expense', date: '2025-07-28' },
-  { id: 5, title: 'Restaurant', amount: 45.50, category: 'Food', type: 'expense', date: '2025-07-27' },
-];
-
-const Dashboard = () => {
-  const [transactions] = useState(mockTransactions);
+const Dashboard = ({ transactions = [] }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [summary, setSummary] = useState({
     totalIncome: 0,
@@ -22,6 +13,11 @@ const Dashboard = () => {
     balance: 0,
   });
   const [topCategories, setTopCategories] = useState([]);
+  
+  // Get recent transactions (last 5)
+  const recentTransactions = [...transactions]
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, 5);
 
   // Calculate summary and categories when transactions change
   useEffect(() => {
@@ -67,12 +63,6 @@ const Dashboard = () => {
 
     return () => clearTimeout(timer);
   }, [transactions]);
-
-
-
-  const recentTransactions = [...transactions]
-    .sort((a, b) => new Date(b.date) - new Date(a.date))
-    .slice(0, 5);
 
   if (isLoading) {
     return (
