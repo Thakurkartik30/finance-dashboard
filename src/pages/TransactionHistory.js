@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { FaSearch, FaSortAmountDown, FaSortAmountUp } from 'react-icons/fa';
-import TransactionTable from '../components/TransactionTable';
 
 const TransactionHistory = ({ transactions = [] }) => {
   const [filteredTransactions, setFilteredTransactions] = useState([]);
