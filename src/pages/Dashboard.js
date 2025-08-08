@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaArrowUp, FaArrowDown, FaWallet, FaPlus } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { FaArrowUp, FaArrowDown, FaWallet } from 'react-icons/fa';
 import SummaryCard from '../components/SummaryCard';
 import TransactionTable from '../components/TransactionTable';
 import TopCategoriesChart from '../components/TopCategoriesChart';
