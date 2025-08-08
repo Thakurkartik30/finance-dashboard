@@ -102,6 +102,15 @@ const TransactionHistory = () => {
     }));
   };
 
+  // Format date to be more readable
+  const formatDate = (dateString) => {
+    return new Date(dateString).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    });
+  };
+
   // Get unique categories for filter dropdown
   const categories = [...new Set(transactions.map(tx => tx.category))];
 
@@ -257,20 +266,15 @@ const TransactionHistory = () => {
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
               {filteredTransactions.length > 0 ? (
-                <TransactionTable 
-                  transactions={filteredTransactions} 
-                </tr>
-              </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
-                {sortedTransactions.map((transaction) => (
-                  <tr key={transaction.id}>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {formatDate(transaction.date)}
-                    </td>
+                filteredTransactions.map((transaction) => (
+                  <tr key={transaction.id} className="hover:bg-gray-50">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="text-sm font-medium text-gray-900">
                         {transaction.title}
                       </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      {formatDate(transaction.date)}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
@@ -285,12 +289,18 @@ const TransactionHistory = () => {
                       {transaction.type === 'income' ? '+' : '-'}${transaction.amount.toFixed(2)}
                     </td>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="4" className="px-6 py-4 text-center text-sm text-gray-500">
+                    No transactions found matching your criteria.
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
         </div>
-      )}
+      </div>
     </div>
   );
 };
