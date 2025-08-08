@@ -2,20 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaSearch, FaSortAmountDown, FaSortAmountUp } from 'react-icons/fa';
 import TransactionTable from '../components/TransactionTable';
 
-// Mock data - in a real app, this would come from an API
-const mockTransactions = [
-  { id: 1, title: 'Grocery Shopping', amount: 125.75, category: 'Food', type: 'expense', date: '2025-08-05' },
-  { id: 2, title: 'Freelance Work', amount: 850.00, category: 'Salary', type: 'income', date: '2025-08-03' },
-  { id: 3, title: 'Electric Bill', amount: 78.90, category: 'Utilities', type: 'expense', date: '2025-08-01' },
-  { id: 4, title: 'New Laptop', amount: 1299.99, category: 'Shopping', type: 'expense', date: '2025-07-28' },
-  { id: 5, title: 'Restaurant', amount: 45.50, category: 'Food', type: 'expense', date: '2025-07-27' },
-  { id: 6, title: 'Monthly Salary', amount: 3500.00, category: 'Salary', type: 'income', date: '2025-07-25' },
-  { id: 7, title: 'Gym Membership', amount: 29.99, category: 'Health', type: 'expense', date: '2025-07-20' },
-  { id: 8, title: 'Online Course', amount: 199.99, category: 'Education', type: 'expense', date: '2025-07-15' },
-];
-
-const TransactionHistory = () => {
-  const [transactions, setTransactions] = useState([]);
+const TransactionHistory = ({ transactions = [] }) => {
   const [filteredTransactions, setFilteredTransactions] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [sortConfig, setSortConfig] = useState({ key: 'date', direction: 'desc' });
@@ -27,16 +14,13 @@ const TransactionHistory = () => {
   });
   const [isLoading, setIsLoading] = useState(true);
 
-  // Fetch transactions (in a real app, this would be an API call)
+  // Initialize filtered transactions when transactions prop changes
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setTransactions(mockTransactions);
-      setFilteredTransactions(mockTransactions);
+    if (transactions && transactions.length > 0) {
+      setFilteredTransactions(transactions);
       setIsLoading(false);
-    }, 500);
-
-    return () => clearTimeout(timer);
-  }, []);
+    }
+  }, [transactions]);
 
   // Apply filters and sorting
   useEffect(() => {
@@ -112,7 +96,7 @@ const TransactionHistory = () => {
   };
 
   // Get unique categories for filter dropdown
-  const categories = [...new Set(transactions.map(tx => tx.category))];
+  const categories = [...new Set(transactions.map(tx => tx.category))].filter(Boolean);
 
   if (isLoading) {
     return (
